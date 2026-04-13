@@ -6,7 +6,7 @@
     "email": "john.doe@example.com",
     "days_since_contact": 12,
     "status": "overdue",
-    "tags": ["college", "close friend"],
+    "tags": ["work"],
     "bio": "Met in university. Love hiking together.",
     "goal": 10,
     "next_due_date": "2026-04-05"
@@ -102,7 +102,7 @@
     "email": "arif.hossain@example.com",
     "days_since_contact": 18,
     "status": "overdue",
-    "tags": ["university", "group study"],
+    "tags": ["university", "study"],
     "bio": "Studied together in university. Loves tech discussions.",
     "goal": 14,
     "next_due_date": "2026-04-03"

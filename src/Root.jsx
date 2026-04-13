@@ -11,6 +11,7 @@ export const Root = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: ()=> fetch('data.json'),
         Component: Home,
       },
       {
