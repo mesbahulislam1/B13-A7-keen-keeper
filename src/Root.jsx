@@ -12,11 +12,15 @@ export const Root = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: ()=> fetch('data.json'),
+        loader: async ()=> {
+          const res = await fetch('/data.json')
+          return res.json()
+        },
         Component: Home,
       },
       {
         path: 'frienddetails/:id',
+        loader: ()=> fetch('/data.json'),
         Component: FriendDetails
       },
       {

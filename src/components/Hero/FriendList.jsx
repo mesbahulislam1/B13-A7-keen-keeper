@@ -10,7 +10,7 @@ const FriendList = () => {
         <h3 className='text-2xl font-semibold'>Your Friends</h3>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5'>
             {
-                friends.map((friend)=> <Card friend={friend}></Card>)
+                friends.map((friend)=> <Card key={friend.id} friend={friend}></Card>)
             }
         </div>
     </div>

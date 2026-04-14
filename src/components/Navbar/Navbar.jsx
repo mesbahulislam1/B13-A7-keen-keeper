@@ -9,7 +9,7 @@ import Logo from '../../assets/logo.png'
 const NavLinks = [
   {
     icon: <RiHome2Line />,
-    path:'',
+    path:'/',
     name: 'Home'
   },
   {
@@ -39,8 +39,8 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-5 shadow">
         {
-        NavLinks.map((link)=>{
-          return <NavLink to={link.path} className={({isActive})=> `${isActive? 'bg-[#244D3F] text-white':'bg-white'} font-semibold shadow-none btn border-none text-[#64748B] `}> <span className='text-[19px]'>{link.icon}</span> {link.name}</NavLink>
+        NavLinks.map((link, index)=>{
+          return <NavLink to={link.path} key={index} className={({isActive})=> `${isActive? 'bg-[#244D3F] text-white':'bg-white'} font-semibold shadow-none btn border-none text-[#64748B] `}> <span className='text-[19px]'>{link.icon}</span> {link.name}</NavLink>
         })
       }
       </ul>
@@ -50,8 +50,8 @@ const Navbar = () => {
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       {
-        NavLinks.map((link)=>{
-          return <NavLink to={link.path} className={({isActive})=> `${isActive? 'bg-[#244D3F] text-white':'bg-white'} font-semibold shadow-none btn border-none text-[#64748B] `}> <span className='text-[19px]'>{link.icon}</span> {link.name}</NavLink>
+        NavLinks.map((link, index)=>{
+          return <NavLink key={index} to={link.path} className={({isActive})=> `${isActive? 'bg-[#244D3F] text-white':'bg-white'} font-semibold shadow-none btn border-none text-[#64748B] `}> <span className='text-[19px]'>{link.icon}</span> {link.name}</NavLink>
         })
       }
     </ul>

@@ -28,8 +28,8 @@ const Footer = () => {
             <h2 className="text-[20px] text-white mb-3">Social Links</h2>
             <ul className="flex gap-2 justify-center">
               {
-                FooterLink.map((link)=> {
-                  return <div className="bg-white w-[40px] h-[40px] flex justify-center items-center rounded-full">
+                FooterLink.map((link, index)=> {
+                  return <div key={index} className="bg-white w-[40px] h-[40px] flex justify-center items-center rounded-full">
                     <a href={link.path} className="text-2xl ">{link.icon}</a>
                   </div>
                 })

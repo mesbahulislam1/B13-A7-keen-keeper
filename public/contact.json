@@ -1,0 +1,5 @@
+[
+  { "id": 1, "type": "call", "text": "Call Mom" },
+  { "id": 2, "type": "text", "text": "Message John" },
+  { "id": 3, "type": "call", "text": "Call Friend" }
+]
