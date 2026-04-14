@@ -1,13 +1,42 @@
 import { useLoaderData, useParams } from "react-router";
 import TextCard from "../components/Ui/TextCard";
 import { LuPhoneCall } from "react-icons/lu";
+import { MdOutlineTextsms } from "react-icons/md";
+import LinkProps from "./LinkProps";
+import { LuVideo } from "react-icons/lu";
+import { ContextProvider } from "../Context/ContaxtText";
+import { useContext } from "react";
+
+
 
 const FriendDetails = () => {
+
+  const ContactList = [
+    {
+      name: 'call',
+      mainIcon: <LuPhoneCall />,
+      icon: 'https://i.ibb.co.com/BVcCZGJ4/call.png',
+ 
+    },
+    {
+      name: 'text',
+      mainIcon: <MdOutlineTextsms />,
+      icon: 'https://i.ibb.co.com/FkhbsXdr/text.png',
+    },
+    {
+      name: 'video',
+      mainIcon: <LuVideo />,
+      icon: 'https://i.ibb.co.com/N6tPYwgz/video.png',
+    }
+  ]
   const data = useLoaderData();
   const { id } = useParams();
 
   const findFriend = data.find((friendId) => friendId.id == id);
 
+
+  const {selectFriend} = useContext(ContextProvider)
+  
   return (
     <div className="max-w-5xl mx-auto my-10 px-4">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -82,10 +111,17 @@ const FriendDetails = () => {
             <h2>Quick Check-In</h2>
             <div>
               <div className="grid grid-cols-3 gap-3">
-                <div className="btn">
-                  <h2>Call</h2>
-                </div>
+                {
+                  ContactList.map((link, index)=> <LinkProps key={index}  findFriend={findFriend} link={link}></LinkProps>)
+                }
               </div>
+              {
+                selectFriend.map((list)=> {
+                  return <div>
+                    <span>{list.icon}</span>
+                  </div>
+                })
+              }
             </div>
           </div>
         </div>
