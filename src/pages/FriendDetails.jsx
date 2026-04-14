@@ -7,6 +7,10 @@ import { LuVideo } from "react-icons/lu";
 import { ContextProvider } from "../Context/ContaxtText";
 import { useContext } from "react";
 import { FaHistory } from "react-icons/fa";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { RiNotificationSnoozeLine } from "react-icons/ri";
+import { FiArchive } from "react-icons/fi";
+
 
 
 
@@ -41,8 +45,9 @@ const FriendDetails = () => {
   return (
     <div className="max-w-5xl mx-auto my-10 px-4">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div className="md:col-span-4 h-fit bg-white shadow-lg rounded-2xl p-6 text-center space-y-4">
-          <img
+        <div className="md:col-span-4 h-fit   text-center space-y-2">
+          <div className="bg-white shadow-lg rounded-2xl p-6 space-y-2">
+            <img
             src={findFriend.picture}
             alt=""
             className="w-28 h-28 mx-auto rounded-full border-4 border-gray-100"
@@ -73,28 +78,37 @@ const FriendDetails = () => {
                 {tag}
               </span>
             ))}
+
+          </div>
+          <p className="text-[17px] text-[#64748B] italic">"{findFriend.bio}"</p>
+          <p className="text-[14px]">Preferred: {findFriend.email}</p>
+          </div>
+          <div>
+            <button className="w-full font-medium btn bg-white shadow-lg"><RiNotificationSnoozeLine />Snooze 2 weeks</button>
+            <button className="w-full font-medium my-1 btn bg-white shadow-lg"><FiArchive />Archive</button>
+            <button className="w-full font-medium btn bg-white shadow-lg text-red-500"><RiDeleteBin5Line /> Delete</button>
           </div>
         </div>
 
         <div className="md:col-span-8 space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-white shadow rounded-xl p-5 text-center hover:shadow-md transition">
-              <h3 className="text-2xl font-bold">62</h3>
+              <h3 className="text-2xl font-bold">{findFriend.days_since_contact}</h3>
               <p className="text-gray-500 text-sm">Days Since Contact</p>
             </div>
 
             <div className="bg-white shadow rounded-xl p-5 text-center hover:shadow-md transition">
-              <h3 className="text-2xl font-bold">30</h3>
+              <h3 className="text-2xl font-bold">{findFriend.goal}</h3>
               <p className="text-gray-500 text-sm">Goal (Days)</p>
             </div>
 
             <div className="bg-white shadow rounded-xl p-5 text-center hover:shadow-md transition">
-              <h3 className="text-lg font-semibold">Feb 27, 2026</h3>
+              <h3 className="text-lg font-semibold">{findFriend.next_due_date}</h3>
               <p className="text-gray-500 text-sm">Next Due</p>
             </div>
           </div>
 
-          <div className="bg-white shadow rounded-2xl p-6 flex justify-between items-center">
+          <div className="bg-white shadow rounded-2xl p-6 flex justify-between ">
             <div>
               <h2 className="text-lg font-semibold">Relationship Goal</h2>
               <p className="text-gray-600">
@@ -102,12 +116,12 @@ const FriendDetails = () => {
               </p>
             </div>
 
-            <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+            <button className="btn px-4 py-2 rounded-lg transition">
               Edit
             </button>
           </div>
           <div className="p-6 shadow rounded-2xl">
-            <h2>Quick Check-In</h2>
+            <h2 className="text-[20px] text-[#244D3F]">Quick Check-In</h2>
             <div>
               <div className="grid grid-cols-3 gap-3">
                 {
@@ -117,8 +131,8 @@ const FriendDetails = () => {
             </div>
             
           </div>
-          <div className=" shadow p-6">
-            <div className="flex justify-between items-center">
+          <div className=" shadow p-6 mt-1 border border-black/10 rounded-2xl">
+            <div className="flex justify-between items-center ">
               <h2 className="text-[20px] text-[#244D3F]">Recent Interactions</h2>
               <Link to={'/timeline'} className="btn"><FaHistory></FaHistory> Full History</Link>
             </div>

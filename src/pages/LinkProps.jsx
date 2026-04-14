@@ -3,7 +3,7 @@ import { ContextProvider } from '../Context/ContaxtText'
 
 const LinkProps = ({link, findFriend}) => {
     
-    const {contactData, setContactData, setSelectFriend} = useContext(ContextProvider)
+    const {contactData, setContactData} = useContext(ContextProvider)
 
     const ContactsData = ()=>{
        const newData = {
@@ -14,8 +14,8 @@ const LinkProps = ({link, findFriend}) => {
        
     }
   return (
-    <div onClick={ContactsData} className='text-center flex flex-col btn h-[70px]'>
-        <span>{link.mainIcon}</span>
+    <div onClick={ContactsData} className='text-center flex flex-col btn h-[80px]'>
+        <span className='text-2xl'>{link.mainIcon}</span>
       <h2 className=' capitalize'>{link.name}</h2>
     </div>
   )
