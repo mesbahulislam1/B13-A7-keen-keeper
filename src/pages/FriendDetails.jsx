@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router";
+import { Link, useLoaderData, useParams } from "react-router";
 import TextCard from "../components/Ui/TextCard";
 import { LuPhoneCall } from "react-icons/lu";
 import { MdOutlineTextsms } from "react-icons/md";
@@ -6,6 +6,7 @@ import LinkProps from "./LinkProps";
 import { LuVideo } from "react-icons/lu";
 import { ContextProvider } from "../Context/ContaxtText";
 import { useContext } from "react";
+import { FaHistory } from "react-icons/fa";
 
 
 
@@ -35,12 +36,12 @@ const FriendDetails = () => {
   const findFriend = data.find((friendId) => friendId.id == id);
 
 
-  const {selectFriend} = useContext(ContextProvider)
+  const {contactData} = useContext(ContextProvider)
   
   return (
     <div className="max-w-5xl mx-auto my-10 px-4">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div className="md:col-span-4 bg-white shadow-lg rounded-2xl p-6 text-center space-y-4">
+        <div className="md:col-span-4 h-fit bg-white shadow-lg rounded-2xl p-6 text-center space-y-4">
           <img
             src={findFriend.picture}
             alt=""
@@ -53,7 +54,6 @@ const FriendDetails = () => {
             {findFriend.days_since_contact} days ago
           </p>
 
-          {/* STATUS BADGE */}
           <span
             className={`px-4 py-1 text-sm text-white rounded-full capitalize inline-block
               ${findFriend.status === "overdue" && "bg-red-500"}
@@ -64,12 +64,11 @@ const FriendDetails = () => {
             {findFriend.status}
           </span>
 
-          {/* TAGS */}
-          <div className="flex flex-wrap justify-center gap-2 pt-2">
+          <div className="flex flex-wrap justify-center gap-2 ">
             {findFriend.tags.map((tag, index) => (
               <span
                 key={index}
-                className="bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full"
+                className="bg-green-100 capitalize text-green-700 text-xs font-semibold px-3 py-2 rounded-full"
               >
                 {tag}
               </span>
@@ -115,15 +114,30 @@ const FriendDetails = () => {
                   ContactList.map((link, index)=> <LinkProps key={index}  findFriend={findFriend} link={link}></LinkProps>)
                 }
               </div>
-              {
-                selectFriend.map((list)=> {
-                  return <div>
-                    <span>{list.icon}</span>
+            </div>
+            
+          </div>
+          <div className=" shadow p-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-[20px] text-[#244D3F]">Recent Interactions</h2>
+              <Link to={'/timeline'} className="btn"><FaHistory></FaHistory> Full History</Link>
+            </div>
+              <div className=" flex flex-col-reverse">
+                {
+                contactData.length == 0? <div>
+                  <h1 className="text-center text-2xl mt-9 text-black/40">Contact History Not Found</h1>
+                </div>: contactData.slice(0,5).map((list)=> {
+                  return <div className="flex items-center gap-3 border-b last:border-t-0 py-3 border-black/18 ">
+                    <span className="text-2xl">{list.mainIcon}</span>
+                    <div>
+                      <h2 className=" capitalize">{list.name}</h2>
+                      <p>Asked for career advice</p>
+                    </div>
                   </div>
                 })
               }
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
