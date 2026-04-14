@@ -16,7 +16,7 @@ import { FiArchive } from "react-icons/fi";
 
 const FriendDetails = () => {
 
-  const ContactList = [
+   const ContactList = [
     {
       name: 'call',
       mainIcon: <LuPhoneCall />,
@@ -112,7 +112,7 @@ const FriendDetails = () => {
             <div>
               <h2 className="text-lg font-semibold">Relationship Goal</h2>
               <p className="text-gray-600">
-                Connect every <span className="font-bold">30 days</span>
+                Connect every <span className="font-bold">{findFriend.goal} days</span>
               </p>
             </div>
 
