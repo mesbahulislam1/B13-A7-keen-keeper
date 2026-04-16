@@ -18,7 +18,7 @@ const TimelinePage = () => {
         popoverTarget="popover-1"
         style={{ anchorName: "--anchor-1" }}
       >
-        Filter timeline <IoIosArrowDown />
+        <span className=" capitalize">{filter =='all' ? 'Filter timeline' : filter}</span> <IoIosArrowDown />
       </button>
 
       <ul
