@@ -10,7 +10,7 @@ const TimelinePage = () => {
     setFilter(e);
   };
   return (
-    <div className="max-w-[1000px] mx-auto mb-9 mt-9">
+    <div className="max-w-[1000px] mx-auto mb-9 mt-9 px-5">
       <h2 className="text-[#1F2937] text-5xl font-medium">Timeline</h2>
       
       <button
